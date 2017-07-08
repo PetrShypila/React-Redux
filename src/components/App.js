@@ -1,9 +1,11 @@
 import React from 'react';
+import Header from './common/Header';
 import HomePage from './home/HomePage';
 import AppBody from './AppBody';
 
 const App = () => (
-  <div className="container-fluid">
+  <div>
+    <Header/>
     <AppBody/>
   </div>
 );
