@@ -1,53 +1,40 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
+import {Redirect} from 'react-router';
 import {bindActionCreators} from 'redux';
 import * as courseActions from '../../actions/courseActions';
+import CourseList from './CourseList';
 
 class CoursesPage extends React.Component {
-  constructor(props, context) {
-    super(props, context);
 
-    this.state = {
-      course: { title: '' }
-    };
-
-    this.onTitleChange = this.onTitleChange.bind(this);
-    this.onClickSave = this.onClickSave.bind(this);
-  }
-
-  onTitleChange(event) {
-    const course = this.state.course;
-    course.title = event.target.value;
-    this.setState({course});
-  }
-
-  onClickSave() {
-    this.props.actions.createCourse(this.state.course);
-  }
-
-  courseRow(course, idx) {
+  static courseRow(course, idx) {
     return (
       <div key={idx}>{course.title}</div>
     );
   }
 
+  constructor(props, context) {
+    super(props, context);
+
+    this.redirectToAddCoursePage = this.redirectToAddCoursePage.bind(this);
+  }
+
+  redirectToAddCoursePage(){
+    this.props.history.push("/courses/new");
+  }
+
   render() {
+    const {courses} = this.props;
     return (
       <div>
         <h1>Courses</h1>
-        {this.props.courses.map(this.courseRow)}
-        <h2>Add Course</h2>
+        <input type="submit"
+               value="Add Course"
+               className="btn btn-primary"
+               onClick={this.redirectToAddCoursePage} />
 
-        <input
-          type="text"
-          onChange={this.onTitleChange}
-          value={this.state.course.title} />
-
-        <input
-          type="submit"
-          value="Save"
-          onClick={this.onClickSave} />
+        <CourseList courses={courses}/>
       </div>
     );
   }
@@ -55,7 +42,8 @@ class CoursesPage extends React.Component {
 
 CoursesPage.propTypes = {
   courses: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
+  actions: PropTypes.object.isRequired,
+  history: PropTypes.object.isRequired
 };
 
 function mapStateToProps(state, ownProps) {

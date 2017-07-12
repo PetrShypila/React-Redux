@@ -1,12 +1,10 @@
-/**
- * Created by petr on 08/07/2017.
- */
 import {combineReducers} from 'redux';
 
 import courses from './courseReducer';
+import authors from './authorReducer';
 
 const rootReducer = combineReducers({
-  courses
+  courses, authors
 });
 
 export default rootReducer;
