@@ -15,17 +15,17 @@
   "dependencies": {
     "babel-polyfill": "6.23.0",
     "bootstrap": "3.3.7",
+    "history": "4.6.3",
     "jquery": "3.2.1",
-    "react": "15.6.1",
     "prop-types": "15.5.10",
+    "react": "15.6.1",
     "react-dom": "15.6.1",
     "react-redux": "5.0.5",
-    "react-router-dom": "^4.1.1",
+    "react-router-dom": "4.1.2",
     "react-router-redux": "4.0.8",
     "redux": "3.7.1",
     "redux-thunk": "2.2.0",
-    "toastr": "2.1.2",
-    "history": "4.6.3"
+    "toastr": "2.1.2"
   },
   "devDependencies": {
     "babel-cli": "6.24.1",
